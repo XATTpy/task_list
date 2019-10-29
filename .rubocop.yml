@@ -2,6 +2,9 @@ AllCops:
   Exclude:
     - bin/setup
     - bin/update
+    - config/initializers/*
+    - db/*
+    - db/migrate/*
 
 Rails:
   Enabled: true

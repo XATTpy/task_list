@@ -10,47 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_191_028_150_858) do
+ActiveRecord::Schema.define(version: 2019_10_29_201457) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'admins', force: :cascade do |t|
-    t.string 'email'
-    t.string 'password'
-    t.string 'name'
-    t.string 'surname'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table 'comments', force: :cascade do |t|
-    t.text 'text'
-    t.string 'commentable_type'
-    t.bigint 'commentable_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index %w[commentable_type commentable_id], name: 'index_comments_on_commentable_type_and_commentable_id'
+  create_table "comments", force: :cascade do |t|
+    t.text "text"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
-  create_table 'tasks', force: :cascade do |t|
-    t.bigint 'admin_id'
-    t.string 'subject'
-    t.string 'assignee'
-    t.string 'status'
-    t.text 'description'
-    t.string 'created_by'
-    t.string 'type'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['admin_id'], name: 'index_tasks_on_admin_id'
+  create_table "tasks", force: :cascade do |t|
+    t.string "subject"
+    t.string "assignee"
+    t.string "status"
+    t.text "description"
+    t.string "created_by"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'email'
-    t.string 'password'
-    t.string 'name'
-    t.string 'surname'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end

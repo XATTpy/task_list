@@ -1,20 +1,15 @@
 FactoryBot.define do
-  factory :admin do
-    name { 'Kujo' }
-    surname { 'Jotaro' }
-    email { 'jojo@gmail.com' }
-    password { '12345678' }
-  end
-
   factory :user do
-    name { 'Dio' }
-    surname { 'Brando' }
     email { 'dio@gmail.com' }
     password { 'warudo' }
   end
 
+  factory :admin do
+    email { 'jojo@gmail.com' }
+    password { '12345678' }
+  end
+
   factory :task do
-    admin { association(:admin) }
     subject { 'Make Pizza' }
     assignee { 'Joe' }
     status { 'To Do' }
