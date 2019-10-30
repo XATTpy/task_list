@@ -1,25 +1,14 @@
 FactoryBot.define do
-  factory :user do
-    email { 'dio@gmail.com' }
-    password { 'warudo' }
-  end
-
-  factory :admin do
-    email { 'jojo@gmail.com' }
-    password { '12345678' }
-  end
-
   factory :task do
-    subject { 'Make Pizza' }
-    assignee { 'Joe' }
-    status { 'To Do' }
-    description { 'I need pizza' }
-    created_by { 'Kujo' }
-    type { 'Issue' }
+    subject { "MyString" }
+    assigne { "MyString" }
+    status { "MyString" }
+    description { "MyText" }
+    created_by { "MyString" }
   end
 
-  factory :comment do
-    commentable { association(:task) }
-    text { 'test' }
+  factory :user do
+    
   end
+
 end

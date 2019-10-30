@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
+  resources :tasks
   devise_for :users
-  devise_for :admins
-  get 'home/index'
-
-  root 'home#index'
+  root to: 'home#index'
 end
