@@ -16,6 +16,7 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @users = User.all
+    authorize @task
   end
 
   # GET /tasks/1/edit

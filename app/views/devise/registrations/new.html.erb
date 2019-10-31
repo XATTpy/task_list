@@ -15,7 +15,9 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :admin %>
+    <%= f.input :admin, as: :boolean do %>
+      <%= f.check_box :admin, {}, true, false %>
+    <% end %>
   </div>
 
   <div class="form-actions">
