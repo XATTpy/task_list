@@ -1,0 +1,19 @@
+<li>
+  <%= comment.text %> -
+  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.commenter %></small>
+
+  <%= simple_form_for [comment, Comment.new] do |f| %>
+    <div class='form-inputs'>
+      <%= f.input :text %>
+      <%= f.input :commenter, input_html: {value: current_user}, readonly: true, as: :hidden %>
+    </div>
+
+    <div class='form-actions'>
+      <%= f.button :submit, 'Reply' %>
+    </div>
+  <% end %>
+
+  <ul>
+      <%= render partial: 'comments/comment', collection: comment.comments %>
+  </ul>
+</li>

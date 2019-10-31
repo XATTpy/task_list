@@ -1,4 +1,5 @@
 <% users = []; for i in (0..@users.length); users.append(@users[i]); end %>
+
 <%= simple_form_for(@task) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -8,7 +9,7 @@
     <%= f.input :assigne, collection: users %>
     <%= f.input :status, collection: ["To Do", "In Progress", "In Review", "Done"], selected: 1 %>
     <%= f.input :description %>
-    <%= f.input :created_by, input_html: {value: current_user}, disabled: true %>
+    <%= f.input :created_by, input_html: {value: current_user}, readonly: true %>
   </div>
 
   <div class="form-actions">

@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :comment do
+    
+  end
+
   factory :task do
     subject { "MyString" }
     assigne { "MyString" }

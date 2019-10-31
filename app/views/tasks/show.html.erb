@@ -25,3 +25,13 @@
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
+
+<h3>Comments</h3>
+<p>
+  <strong>Add a comment:</strong>
+  <%= render 'comments/comment_form', task: @task, comment: @comment %>
+</p>
+
+<ul>
+  <%= render(partial: 'comments/comment', collection: @task.comments) %>
+</ul>
