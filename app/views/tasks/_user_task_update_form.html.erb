@@ -4,10 +4,14 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :subject %>
-    <%= f.input :assigne, collection: users %>
-    <%= f.input :status, collection: ["To Do", "In Progress", "In Review", "Done"], selected: 1 %>
-    <%= f.input :description %>
+    <%= f.input :subject, disabled: true %>
+    <%= f.input :assigne, collection: users, disabled: true %>
+    <% if not @task.status == "In Review" %>
+        <%= f.input :status, collection: ["To Do", "In Progress", "In Review"] %>
+    <% else %>
+        <%= f.input :status, value: "In Review", disabled: true %>
+    <% end %>
+    <%= f.input :description, disabled: true %>
     <%= f.input :created_by, input_html: {value: current_user}, disabled: true %>
   </div>
 

@@ -21,6 +21,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @users = User.all
   end
 
   # POST /tasks
@@ -57,6 +58,7 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
+    authorize @task
     @task.destroy
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
