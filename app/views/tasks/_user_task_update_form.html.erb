@@ -6,10 +6,10 @@
   <div class="form-inputs">
     <%= f.input :subject, disabled: true %>
     <%= f.input :assigne, collection: users, disabled: true %>
-    <% if not @task.status == "In Review" %>
+    <% if not ["In Review", "Done"].include?(@task.status) %>
         <%= f.input :status, collection: ["To Do", "In Progress", "In Review"] %>
     <% else %>
-        <%= f.input :status, value: "In Review", disabled: true %>
+        <%= f.input :status, disabled: true %>
     <% end %>
     <%= f.input :description, disabled: true %>
     <%= f.input :created_by, input_html: {value: current_user}, disabled: true %>
