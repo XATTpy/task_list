@@ -29,6 +29,13 @@ class CommentsController < ApplicationController
       end
     end
 
+    def destroy
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_back fallback_location: root_path, notice: 'Task was successfully destroyed.' }
+      end
+    end
+
     private
     def set_comment
       @comment = Comment.find(params[:id])
