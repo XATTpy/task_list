@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     before_action :find_commentable
+    before_action :set_comment, only: [:edit, :update, :destroy]
 
     def new
       @comment = Comment.new
@@ -15,7 +16,24 @@ class CommentsController < ApplicationController
       end
     end
 
+    def edit
+    end
+
+    def update
+      respond_to do |format|
+        if @comment.update(comment_params)
+          format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully updated.' }
+        else
+          format.html { render :edit }
+        end
+      end
+    end
+
     private
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
+
     def comment_params
       params.require(:comment).permit(:commenter, :text)
     end

@@ -33,5 +33,5 @@
 </p>
 
 <ul>
-  <%= render(partial: 'comments/comment', collection: @task.comments) %>
+  <%= render(partial: 'comments/comment', collection: @task.comments, task: @task) %>
 </ul>

@@ -1,6 +1,7 @@
 <li>
   <%= comment.text %> -
   <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.commenter %></small>
+  <%= link_to 'Edit', edit_task_comment_path(@task, comment) %>
 
   <%= simple_form_for [comment, Comment.new] do |f| %>
     <div class='form-inputs'>
