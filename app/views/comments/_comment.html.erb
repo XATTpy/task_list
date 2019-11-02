@@ -4,7 +4,7 @@
 
   <%= simple_form_for [comment, Comment.new] do |f| %>
     <div class='form-inputs'>
-      <%= f.input :text %>
+      <%= f.input :text, label: false %>
       <%= f.input :commenter, input_html: {value: current_user}, readonly: true, as: :hidden %>
     </div>
 

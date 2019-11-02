@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/dashboard', to: 'dashboard#index'
+
   resources :tasks do
     resources :comments
   end

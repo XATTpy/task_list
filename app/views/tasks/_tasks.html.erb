@@ -1,0 +1,33 @@
+<h1>Tasks</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th><strong>Subject</strong></th>
+      <th><strong>Assigne</strong></th>
+      <th><strong>Status</strong></th>
+      <th><strong>Created by</strong></th>
+      <th><strong>Created at</strong></th>
+      <th><strong>Methods</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.subject %></td>
+        <td><%= task.assigne %></td>
+        <td><%= task.status %></td>
+        <td><%= task.created_by %></td>
+        <td><%= task.created_at %></td>
+        <td>
+          <%= link_to 'Show', task %>
+          <%= link_to 'Edit', edit_task_path(task) %>
+          <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path %>
