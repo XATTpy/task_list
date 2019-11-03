@@ -33,6 +33,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        UserMailer.with(user: @task.user, task: @task).task_email.deliver_now
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
       else
         format.html { render :new }
@@ -43,8 +44,13 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    task_before_update = @task
     respond_to do |format|
       if @task.update(task_params)
+        if @task.status != task_before_update.status and @task.status != "To Do"
+          user = User.find_by username: @task.created_by
+          UserMailer.with(user: user, task: @task).task_email.deliver_now
+        end
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
       else
         format.html { render :edit }
