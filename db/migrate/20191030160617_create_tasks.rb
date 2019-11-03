@@ -6,6 +6,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.string :status
       t.text :description
       t.string :created_by
+      t.belongs_to :user
 
       t.timestamps
     end

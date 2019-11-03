@@ -2,19 +2,19 @@
 <table class="table">
   <thead>
     <tr>
-      <th><strong>Subject</strong></th>
-      <th><strong>Assigne</strong></th>
-      <th><strong>Status</strong></th>
-      <th><strong>Created by</strong></th>
-      <th><strong>Last update</strong></th>
-      <th><strong>Methods</strong></th>
+      <th width="20%"><strong>Subject</strong></th>
+      <th width="20%"><strong>Assigne</strong></th>
+      <th width="20%"><strong>Status</strong></th>
+      <th width="20%"><strong>Created by</strong></th>
+      <th width="20%"><strong>Last update</strong></th>
+      <th width="20%"><strong>Methods</strong></th>
     </tr>
   </thead>
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.subject %></td>
-        <td><%= task.assigne %></td>
+        <td><%= link_to task.assigne, edit_user_path(task.user_id) %></td>
         <td><%= task.status %></td>
         <td><%= task.created_by %></td>
         <td><%= task.created_at %></td>
@@ -29,5 +29,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Task', new_task_path %>
