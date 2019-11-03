@@ -2,7 +2,9 @@
   <div class="container">
     <div class="navbar-header">
       <%= link_to 'Task Manager', root_path, class: 'navbar-brand' %>
-      <%= link_to 'Dashboard', '/dashboard' %>
+      <% if current_user and current_user.admin %>
+        <%= link_to 'Dashboard', '/dashboard', class: 'navbar-brand' %>
+      <% end %>
     </div>
     <div id="navbar">
   

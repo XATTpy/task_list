@@ -1,6 +1,6 @@
 <h1>Editing Task</h1>
 
-<% if current_user.admin? %>
+<% if current_user.admin? and @task.assignee != current_user.username %>
     <%= render 'form', task: @task %>
 <% else %>
     <%= render 'user_task_update_form', task: @task %>

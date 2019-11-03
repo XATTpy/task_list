@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_185336) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "subject"
-    t.string "assigne"
+    t.string "assignee"
     t.string "status"
     t.text "description"
     t.string "created_by"

@@ -22,6 +22,7 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @users = User.all
+    authorize @task
   end
 
   # POST /tasks
@@ -69,6 +70,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:subject, :assigne, :status, :description, :created_by)
+      params.require(:task).permit(:subject, :assignee, :status, :description, :created_by)
     end
 end

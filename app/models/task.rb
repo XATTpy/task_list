@@ -4,8 +4,8 @@ class Task < ApplicationRecord
     before_validation :set_user
 
     def set_user
-        assigne = self.assigne
-        user = User.find_by username: assigne
+        assignee = self.assignee
+        user = User.find_by username: assignee
         self.user_id = user.id
     end
 end

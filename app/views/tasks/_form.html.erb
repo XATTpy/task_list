@@ -6,7 +6,7 @@
 
   <div class="form-inputs">
     <%= f.input :subject %>
-    <%= f.input :assigne, collection: users, selected: 1 %>
+    <%= f.input :assignee, collection: users, selected: 1 %>
     <%= f.input :status, collection: ["To Do", "In Progress", "In Review", "Done"], selected: 1 %>
     <%= f.input :description %>
     <%= f.input :created_by, input_html: {value: current_user}, readonly: true %>

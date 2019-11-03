@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
     end
 
     def edit
+      authorize @comment
     end
 
     def update
@@ -30,6 +31,7 @@ class CommentsController < ApplicationController
     end
 
     def destroy
+      authorize @comment
       @comment.destroy
       respond_to do |format|
         format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }

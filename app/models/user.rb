@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :tasks, dependent: :destroy
-  before_save :set_username
+  before_create :set_username
 
   def get_username
     return self.email.split('@')[0].capitalize
