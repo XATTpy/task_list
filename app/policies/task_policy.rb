@@ -12,7 +12,9 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin?
+    if user.username == task.created_by or user.username == task.assignee
+      return true
+    end
   end
 
   def edit?
