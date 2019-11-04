@@ -1,4 +1,4 @@
-<% users = []; for i in (0..@users.length); users.append(@users[i]); end %>
+<% users = []; for user in @users; users.append(user.username); end %>
 
 <%= simple_form_for(@task) do |f| %>
   <%= f.error_notification %>
@@ -8,7 +8,7 @@
     <%= f.input :subject, disabled: true %>
     <%= f.input :assignee, disabled: true %>
     <% if not ["In Review", "Done"].include?(@task.status) %>
-        <%= f.input :status, collection: ["To Do", "In Progress", "In Review"] %>
+        <%= f.input :status, collection: ["To Do", "In Progress", "In Review"], selected: @task.status %>
     <% else %>
         <%= f.input :status, disabled: true %>
     <% end %>

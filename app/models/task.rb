@@ -2,6 +2,7 @@ class Task < ApplicationRecord
     has_many :comments, as: :commentable
     belongs_to :user
     before_validation :set_user
+    validates :subject, presence: true
 
     def set_user
         assignee = self.assignee

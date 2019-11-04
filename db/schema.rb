@@ -28,9 +28,10 @@ ActiveRecord::Schema.define(version: 2019_10_31_185336) do
   create_table "tasks", force: :cascade do |t|
     t.string "subject"
     t.string "assignee"
-    t.string "status"
+    t.string "status", default: "To Do"
     t.text "description"
     t.string "created_by"
+    t.string "type"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

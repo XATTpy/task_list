@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :story do
+    
+  end
+
+  factory :issue do
+    
+  end
+
   factory :comment do
     
   end
