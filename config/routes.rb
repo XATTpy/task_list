@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'user/edit'
-  get 'user/update'
-  get 'user/destroy'
+  get 'sql', to: 'sql#index'
   get '/dashboard', to: 'dashboard#index'
 
   resources :tasks do
@@ -11,7 +9,7 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments
   end
-  
+
   devise_for :users, path_prefix: 'my'
   resources :user
   root to: 'home#index'

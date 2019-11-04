@@ -12,18 +12,15 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def destroy?
-    if user.username == task.created_by or user.username == task.assignee
-      return true
-    end
+    true if (user.username == task.created_by) || (user.username == task.assignee)
   end
 
   def edit?
-    if user.username == task.created_by or user.username == task.assignee
-      return true
-    end
+    true if (user.username == task.created_by) || (user.username == task.assignee)
   end
 
   private
+
   def task
     record
   end

@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: %i[show edit update destroy]
 
   # GET /tasks
   # GET /tasks.json
@@ -9,8 +9,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1
   # GET /tasks/1.json
-  def show
-  end
+  def show; end
 
   # GET /tasks/new
   def new
@@ -47,7 +46,7 @@ class TasksController < ApplicationController
     task_before_update = @task
     respond_to do |format|
       if @task.update(task_params)
-        if @task.status != task_before_update.status and @task.status != "To Do"
+        if (@task.status != task_before_update.status) && (@task.status != 'To Do')
           user = User.find_by username: @task.created_by
           UserMailer.with(user: user, task: @task).task_email.deliver_now
         end
@@ -69,13 +68,14 @@ class TasksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = Task.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def task_params
-      params.require(:task).permit(:subject, :assignee, :status, :description, :created_by)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def task_params
+    params.require(:task).permit(:subject, :assignee, :status, :description, :created_by)
+  end
 end

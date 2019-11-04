@@ -6,15 +6,15 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   before_create :set_username
 
-  def get_username
-    return self.email.split('@')[0].capitalize
+  def getusername
+    email.split('@')[0].capitalize
   end
 
   def set_username
-    self.username = get_username
+    self.username = getusername
   end
 
   def to_s
-    self.username
+    username
   end
 end

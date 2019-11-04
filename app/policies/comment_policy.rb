@@ -1,28 +1,25 @@
 class CommentPolicy < ApplicationPolicy
-    attr_accessor :error_message
-  
-    class Scope < Scope
-      def resolve
-        scope.all
-      end
-    end
+  attr_accessor :error_message
 
-    def edit?
-        user2 = User.find_by username: comment.commenter
-        if user.admin? and (not user2.admin? or user == user2)
-            return true
-        end
+  class Scope < Scope
+    def resolve
+      scope.all
     end
+  end
 
-    def destroy?
-        user2 = User.find_by username: comment.commenter
-        if user.admin? and (not user2.admin? or user == user2)
-            return true
-        end
-    end
+  def edit?
+    user2 = User.find_by username: comment.commenter
+    return true if user.admin? && (!user2.admin? || (user == user2))
+  end
 
-    private
-    def comment
-      record
-    end
+  def destroy?
+    user2 = User.find_by username: comment.commenter
+    return true if user.admin? && (!user2.admin? || (user == user2))
+  end
+
+  private
+
+  def comment
+    record
+  end
 end
