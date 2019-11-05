@@ -2,6 +2,8 @@
 
 Ruby on Rails app which helps with management.
 
+Url: https://xatt-task-manager.herokuapp.com/
+
 # Quickstart
 
 To install all the dependencies use `bundle install`. 
